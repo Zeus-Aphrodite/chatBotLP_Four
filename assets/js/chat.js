@@ -73,7 +73,7 @@ $("#form-input-phone").on("input", function () {
 $("#form-input-name").on("input", function () {
   activeBtn();
 });
-let timeoutId; 
+
 /**
  * 関数
  */
@@ -116,84 +116,17 @@ function addTextBeforeAnwser(data) {
   return ["はい", "いいえ"].includes(data) ? "" : "です。";
 }
 
-$("#back_button1").on("click", function () {
-  $("input[name='data[building_type_id]']").prop("checked", false);
- clearTimeout(timeoutId);
+// 入力値を吹き出しに入れる end
 
-        $("#building_type_id")
-          .find(".insert_answer1")
-          .addClass("insert_answer");
-  
-  
-});
-$("#back_button2").on("click", function () {
-  $("input[name='data[work_id_outwall]']").prop("checked", false);
-
-  
-  
-});
-$("#back_button3").on("click", function () {
-  $("input[name='data[study_status]']").prop("checked", false);
-
-  
-  
-});
-$("#back_button4").on("click", function () {
-  $("input[name='data[floors]']").prop("checked", false);
-
-  
-  
-});
-$("#back_button5").on("click", function () {
-  $("input[name='data[rough_square_id]']").prop("checked", false);
-
-  
-  
-});
-$("#back_button6").on("click", function () {
-  $("input[name='data[exterior_wall_material]']").prop("checked", false);
-
-  
-  
-});
-$("#back_button7").on("click", function () {
-  $("input[name='data[roofing_material]']").prop("checked", false);
-
-  
-  
-});
-$("#back_button8").on("click", function () {
-  $("input[name='data[building_age_id]']").prop("checked", false);
-
-  
-  
-});
-$("#back_button9").on("click", function () {
-  $("input[name='data[estimating]']").prop("checked", false);
-
-  
-  
-});
-$("#back_button10").on("click", function () {
-  $("input[name='data[estimating_ans]']").prop("checked", false);
-
-  
-  
-});
-
-
-
+// 入力値を吹き出しに入れる処理 start
 function input_answer(element) {
   // 各値取得
-
+ 
+ 
   var queston_answer = element.closest(".question_sec"); //質問・回答欄全て
   var answer_input = element.closest(".ans_input"); //回答中の入力欄
   var answer_balloon = queston_answer.find(".ans_display"); //回答吹き出し欄
-  var backbutton = queston_answer.find(".back_button1"); //回答吹き出し欄
   var multipleAnswer = false;
-  backbutton.on('click', function () {
-  multipleAnswer=false
-})
   if (queston_answer.find(".insert_answer").length > 1) {
     multipleAnswer = true;
     positionG = queston_answer
@@ -208,16 +141,12 @@ function input_answer(element) {
     if (element.attr("type") == "radio") {
       if (element.val() == 2) {
         $("#building_type_id").removeClass("no_display");
-        
         element.closest(".answer").remove();
         return;
       } else {
         $("#building_type_id")
-          .find(".insert_answer1")
+          .find(".insert_answer")
           .removeClass("insert_answer");
-      
-        $(".ans_input1").removeClass("no_display");
-        $(".work_id_outwall1").removeClass("no_display");
         $(".replace-question .man_txt p").text(
           $(".replace-question .man_txt p")
             .text()
@@ -235,60 +164,6 @@ function input_answer(element) {
       );
     }
   }
-  if (element.attr("name") == "data[work_id_outwall]") {
-    if (element.attr("type") == "radio") {
-       $(".ans_input2").removeClass("no_display");
-       $(".work_id_outwall2").removeClass("no_display");
-    }
-  }  
-  if (element.attr("name") == "data[study_status]") {
-    if (element.attr("type") == "radio") {
-      $(".ans_input3").removeClass("no_display");
-      $(".work_id_outwall3").removeClass("no_display");
-    }
-  }  
-  if (element.attr("name") == "data[floors]") {
-    if (element.attr("type") == "radio") {
-      $(".ans_input4").removeClass("no_display");
-      $(".work_id_outwall4").removeClass("no_display");
-    }
-  }  
-    if (element.attr("name") == "data[rough_square_id]") {
-      if (element.attr("type") == "radio") {
-        $(".ans_input5").removeClass("no_display");
-        $(".work_id_outwall5").removeClass("no_display");
-      }
-    }  
-    if (element.attr("name") == "data[exterior_wall_material]") {
-      if (element.attr("type") == "radio") {
-        $(".ans_input6").removeClass("no_display");
-        $(".work_id_outwall6").removeClass("no_display");
-      }
-    }  
-    if (element.attr("name") == "data[roofing_material]") {
-      if (element.attr("type") == "radio") {
-        $(".ans_input7").removeClass("no_display");
-        $(".work_id_outwall7").removeClass("no_display");
-      }
-  }  
-   if (element.attr("name") == "data[building_age_id]") {
-     if (element.attr("type") == "radio") {
-       $(".ans_input8").removeClass("no_display");
-       $(".work_id_outwall8").removeClass("no_display");
-     }
-   }  
-   if (element.attr("name") == "data[estimating]") {
-     if (element.attr("type") == "radio") {
-       $(".ans_input9").removeClass("no_display");
-       $(".work_id_outwall9").removeClass("no_display");
-     }
-   }  
-   if (element.attr("name") == "data[estimating_ans]") {
-     if (element.attr("type") == "radio") {
-       $(".ans_input10").removeClass("no_display");
-       $(".work_id_outwall10").removeClass("no_display");
-     }
-   }  
   // show step 2
   if (element.attr("name") == "data[buildings_prefecture]") {
     element.closest(".answer").remove();
@@ -343,18 +218,11 @@ function input_answer(element) {
     }
     // show step 4
     if (element.attr("name") == "work_id_outwall") {
-      $(".paint, #paint").remove();
-      $(".material_wall, #material_wall").remove();
-
       if ([3, 4].includes(parseInt(element.val()))) {
-        
-           $(".ans_input2").removeClass("no_display");
-           $(".work_id_outwall2").removeClass("no_display");
-           $(".ans_display2").removeClass("no_display");
+        $(".paint, #paint").remove();
+        $(".material_wall, #material_wall").remove();
       } else {
         // is paint
-        $(".ans_input2").removeClass("no_display");
-        $(".work_id_outwall2").removeClass("no_display");
         if (element.val() == 1) {
           $(".material_wall, #material_wall").remove();
         }
@@ -480,7 +348,9 @@ function input_answer(element) {
   display_newer();
 
 }
+// 入力値を吹き出しに入れる処理 end
 
+// 最新の質問またはCVボタンを表示する start
 function display_newer() {
   // 質問欄が回答されているか確認
   var all_answer_count = 0; //回答済みフラグ
@@ -489,7 +359,6 @@ function display_newer() {
     // 回答用の吹き出し内のテキストがあるか確認
     var count = 0;
     var answers = $(this).find(".insert_answer");
-     
     answers.each(function () {
       if ($(this).text()) {
         count += 1;
@@ -499,12 +368,10 @@ function display_newer() {
     // 回答済み（吹き出しの数 = テキスト入力済みの吹き出しの数）の時
     if (answers.length == count) {
       if ($(this).hasClass("no_display")) {
-         
         $(this).removeClass("no_display");
       }
       all_answer_count += 1;
     } else {
-
       var self = $(this);
       var time = 200;
         if (self.hasClass('show-inform')) {
@@ -517,13 +384,11 @@ function display_newer() {
         }
         setTimeout(function () {
 	  	  $('#msg-inform').removeClass("no_display");
-        }, timeShowInform);
-                
+		}, timeShowInform);
       }
 
       display_text(self.find(".question"), 1000);
       if ($("input[name=question").length) {
-           
         var total =
           self.find(".illustration").length +
           self.find(".cmt").length;
@@ -599,7 +464,6 @@ function display_newer() {
     }
 
     if ($(".question_sec").length == all_answer_count) {
-      
       if (myParamListing == 1 && $("#form-input-phone").val() != null) {
         checkPhoneNumber($("#form-input-phone").val());
       }
@@ -611,14 +475,11 @@ function display_newer() {
         600
       );
     } else if (
-      
       myParamListing == 1 &&
       all_answer_count == $(".question_sec").length - 1
     ) {
-      
       $(".submit").prop("disabled", false);
     } else {
-      
       $(".submit").prop("disabled", true);
     }
   });
