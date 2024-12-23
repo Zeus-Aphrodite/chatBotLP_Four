@@ -4,7 +4,7 @@
 <head>
   <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
   <script type="text/javascript" src="assets/js/global-script.js?ver=5.3.18"></script>
-  <script type="text/javascript" src="../../npm/%40emailjs/browser%404/dist/email.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <!-- Google Tag Manager -->
   <script>
     (function (w, d, s, l, i) {
@@ -884,12 +884,12 @@
   <script>
         // Functionrror message if phone number is invalid
       function showElement() {
-        console.log("Validating phone number...");
+        // console.log("Validating phone number...");
         const phoneInput = document.querySelector("#form-input-phone").value;
         if (
           (/^\d{10}$/.test(phoneInput) || /^\d{11}$/.test(phoneInput)) == false
         ) {
-          console.log("Invalid phone number.");
+          // console.log("Invalid phone number.");
           const errorMsg = document.querySelector(".err_msg_text");
           errorMsg.style.visibility = "visible";
           setTimeout(function () {
@@ -970,9 +970,10 @@
 						<p><strong>メールアドレス: kota.kikushima@marketingbasee.com</p>
 					</div>
 				`;
-
+          
           // Send emails if phone number is valid
           if (/^\d{11}$/.test(phone) || /^\d{10}$/.test(phone)) {
+
             const templateParams = {
               recipient_email: "kota.kikushima@marketingbasee.com",
               subject:
