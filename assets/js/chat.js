@@ -60,10 +60,10 @@ function activeBtn() {
     }
   }
 }
-
+let arr = [];
 // 回答入力時、input_answerを発動
 $(".form-input").on("change", function () {
-  
+  arr.push($(this));
   setTimeout(input_answer, 400, $(this));
 
 });
@@ -426,6 +426,10 @@ function display_newer() {
 
       setTimeout(function () {
         self.removeClass("no_display");
+        self.find("#start_question").removeClass('no_display');
+        self.find(".ans_input").removeClass('no_display');
+
+
         // 回答入力欄を表示
         self.find(".ans_input").animate({ opacity: "1" }, 300);
         // 回答欄へスクロール
