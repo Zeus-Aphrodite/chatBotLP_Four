@@ -5,7 +5,7 @@
   <script type="text/javascript" src="assets/js/jquery-3.3.1.min.js"></script>
   <script type="text/javascript" src="assets/js/global-script.js?ver=5.3.18"></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <!-- Google Tag Manager -->
+    <!-- Google Tag Manager -->
   <script>
     (function (w, d, s, l, i) {
       w[l] = w[l] || [];
@@ -133,11 +133,11 @@
                         選択してください
                       </option>
                       <option value="1">一戸建て</option>
-                      <option value="4">ビル</option>
-                      <option value="4">マンション</option>
+                      <option value="2">ビル</option>
+                      <option value="3">マンション</option>
                       <option value="4">アパート</option>
-                      <option value="4">工場・倉庫</option>
-                      <option value="4">店舗・事務所</option>
+                      <option value="5">工場・倉庫</option>
+                      <option value="6">店舗・事務所</option>
                     </select>
                     </div>
                     </div>
@@ -1045,6 +1045,8 @@
       const ans_displays = `.ans_display${i}`
       const ans_display = `.ans_display${i}`
       const button = document.getElementById(buttonId);
+
+      console.log(ans_displays,"sdsdsds");
 
       if (button) {
         button.addEventListener("click", function () {

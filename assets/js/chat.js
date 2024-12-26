@@ -120,6 +120,7 @@ function addTextBeforeAnwser(data) {
 
 // 入力値を吹き出しに入れる処理 start
 function input_answer(element) {
+  console.log(element,"skdks");
   // 各値取得
  
  
@@ -139,6 +140,8 @@ function input_answer(element) {
   // show step 1
   if (element.attr("name") == 'data[building_type_id]') {
     if (element.attr("type") == "radio") {
+      console.log(element.val(),"dsds");
+
       if (element.val() == 2) {
         $("#building_type_id").removeClass("no_display");
         element.closest(".answer").remove();
@@ -154,6 +157,22 @@ function input_answer(element) {
         );
       }
     } else {
+      const newText = element.find(`[value='${element.val()}']`).text();
+
+      console.log(newText,"sdsdsds");
+
+      // Set the value to the element with the class `.insert_answer`
+      // $(".insert_answer").text(newText);
+
+      const targetSpan = $("#building_type_id .ans_display.ans_display0 p span");
+
+      if (!targetSpan.hasClass("insert_answer")) {
+        targetSpan.addClass("insert_answer");
+      }
+  
+      // Set the value to `.insert_answer` inside `.ans_display.ans_display0`
+      targetSpan.text(newText);
+   
       $(".replace-question .man_txt p").text(
         $(".replace-question .man_txt p")
           .text()
@@ -317,6 +336,7 @@ function input_answer(element) {
     );
     $("input[name=city_code]").val(element.attr("data-name"));
   }
+  console.log(multipleAnswer,);
 
   if (multipleAnswer) {
     input_to_balloon(
